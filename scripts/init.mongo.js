@@ -20,3 +20,11 @@ db.issues.insert([
 db.issues.createIndex({status: 1});
 db.issues.createIndex({owner: 1});
 db.issues.createIndex({created: 1});
+
+const MongoClient = require('mongdb').MongoClient;
+
+MongoClient.connect('mongodb://localhost/playground', function(err, db) {
+    db.collection('employees').find().toArray(function(err, docs){
+        console.log('Result of find:', docs)
+    });
+});
